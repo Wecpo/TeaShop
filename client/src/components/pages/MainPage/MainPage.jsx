@@ -6,6 +6,7 @@ import { getTeaList } from "../../../store/tea";
 import { paginate } from "../../../utils/paginate";
 import Pagination from "./pagination";
 import { useEffect, useState } from "react";
+import Loader from "../../ui/loader";
 
 const MainPage = () => {
      const teaList = useSelector(getTeaList());
@@ -26,17 +27,15 @@ const MainPage = () => {
                return list.length;
           }
      };
-
      const count = getCount(teaList);
-     console.log(teaList);
-
      const cropTea = paginate(teaList, currentPage, pageSize);
 
      if (!isLoading) {
           return (
                <div className="bg-slate-100">
-                    {" "}
-                    <h1>Приветствуем Вас в нашем магазине TeaShop</h1>
+                    <h1 className=" flex justify-center px-4 pt-4 mb-4">
+                         Приветствуем Вас в нашем магазине TeaShop
+                    </h1>
                     <NavBar />
                     <ItemPage teaList={cropTea} />
                     <Pagination
@@ -50,7 +49,7 @@ const MainPage = () => {
           );
      }
 
-     return `Loading`;
+     return <Loader />;
 };
 
 export default MainPage;
