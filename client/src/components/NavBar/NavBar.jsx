@@ -1,11 +1,8 @@
-import styles from "./NavBar.module.css";
-// import { NavLink } from "react-router-dom";
-
 const NavBar = () => {
      return (
-          <nav className={styles.NavBar}>
+          <nav>
                <div>
-                    <ul className={styles.crumb}>
+                    <ul>
                          <li>Главная</li>
                          <li>Профиль</li>
                          <li>Корзина</li>

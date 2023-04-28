@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
-import "./assets/styles/global.css";
 import { Provider } from "react-redux";
 import App from "./App";
 import store from "./store/createStore";
+import "./index.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
