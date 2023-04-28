@@ -2,7 +2,6 @@
 import React from "react";
 
 const ItemPage = ({ teaList }) => {
-     console.log(teaList);
      if (teaList === null) {
           return `loading`;
      }
