@@ -1,11 +1,19 @@
-const ItemPage = () => {
-     async function data() {
-          const data = await fetch(`http://localhost:8080/api/tea`);
-          return data;
+// import { Link } from "react-router-dom";
+import React from "react";
+
+const ItemPage = ({ teaList }) => {
+     console.log(teaList);
+     if (teaList === null) {
+          return `loading`;
      }
-     const result = data().then((data) => data.json());
-     result.then((data) => console.log(data));
-     return <h1>item</h1>;
+     return teaList.map((tea) => (
+          <div key={tea._id}>
+               {" "}
+               <a href="">
+                    {tea.name} - {tea.price} р
+               </a>{" "}
+          </div>
+     ));
 };
 
 export default ItemPage;
