@@ -9,8 +9,9 @@ const MainPage = () => {
 
      return (
           <>
+               {" "}
+               <h1>Приветствуем Вас в нашем магазине TeaShop</h1>
                <NavBar />
-               <h1>Приветствуем в нашем магазине TeaShop</h1>
                <ItemPage teaList={teaList} />
                <Footer />
           </>
