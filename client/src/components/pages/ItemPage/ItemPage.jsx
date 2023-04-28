@@ -14,14 +14,14 @@ const ItemPage = ({ teaList }) => {
                <div className="flex flex-col items-center pb-10">
                     <img
                          className="w-24 h-24 mb-3 rounded-full shadow-lg"
-                         src={tea.img}
+                         src={tea.image}
                          alt="Здесь должена быть картинка чая"
                     />
                     <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
                          {tea.name}
                     </h5>
                     <span className="text-sm text-gray-500 dark:text-gray-400">
-                         {`ABOUT TEA id`}
+                         {tea.about}
                     </span>
                     <div className="flex mt-4 space-x-3 md:mt-6">
                          <a

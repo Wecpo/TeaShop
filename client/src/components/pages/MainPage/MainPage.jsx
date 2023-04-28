@@ -28,12 +28,13 @@ const MainPage = () => {
      };
 
      const count = getCount(teaList);
+     console.log(teaList);
 
      const cropTea = paginate(teaList, currentPage, pageSize);
 
      if (!isLoading) {
           return (
-               <>
+               <div className="bg-slate-100">
                     {" "}
                     <h1>Приветствуем Вас в нашем магазине TeaShop</h1>
                     <NavBar />
@@ -45,7 +46,7 @@ const MainPage = () => {
                          onPageChange={handlePageChange}
                     />
                     <Footer />
-               </>
+               </div>
           );
      }
 
