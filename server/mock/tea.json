@@ -2,41 +2,57 @@
      {
           "id": 1,
           "name": "Черный чай",
-          "price": 300
+          "price": 300,
+          "about": "Вкусный черный чай",
+          "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/93/f6/d5d68f02be74a9d3da20fc66b49a.jpeg"
      },
      {
           "id": 2,
           "name": "Зеленый чай",
-          "price": 320
+          "price": 320,
+          "about": "Вкусный зеленый чай",
+          "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/09/26/bb9242167f20db76f9b4f646bfd5.jpeg"
      },
      {
           "id": 3,
           "name": "Красный чай",
-          "price": 340
+          "price": 340,
+          "about": "Вкусный красный чай",
+          "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/19/27/713c084ce4ec47ecaaea052b32cd.jpeg"
      },
      {
           "id": 4,
           "name": "Пуэр",
-          "price": 320
+          "price": 400,
+          "about": "Вкусный пуэр",
+          "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/33/b9/8d2864f7afbd774d3f96d9e3bbfd.jpeg"
      },
      {
           "id": 5,
           "name": "Улун",
-          "price": 320
+          "price": 280,
+          "about": "Вкусный улун",
+          "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/69/98/baafbcddcf68b44e7e9155f9be1e.jpeg"
      },
      {
-          "id": 4,
+          "id": 6,
           "name": "Белый чай",
-          "price": 320
+          "price": 330,
+          "about": "Вкусный белый чай",
+          "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/31/be/bb6d906476a4f292cc772c9d6bca.jpeg"
      },
      {
-          "id": 4,
+          "id": 7,
           "name": "Тайский чай",
-          "price": 320
+          "price": 410,
+          "about": "Вкусный тайский чай",
+          "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/62/86/f61199fb93a77a13347233fcc927.jpeg"
      },
      {
-          "id": 4,
+          "id": 8,
           "name": "Габа чай",
-          "price": 320
+          "price": 400,
+          "about": "Вкусный габа чай",
+          "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/b2/41/f7909015785072733f696037ce88.jpeg"
      }
 ]
