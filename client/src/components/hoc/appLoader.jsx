@@ -6,6 +6,7 @@ import {
      getUsersLoadingStatus,
      loadUsersList,
 } from "../../store/users";
+import Loader from "../ui/loader";
 
 const AppLoader = ({ children }) => {
      const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const AppLoader = ({ children }) => {
                dispatch(loadUsersList());
           }
      }, [isLoggedIn]);
-     if (usersStatusLoading) return "loading";
+     if (usersStatusLoading) return <Loader />;
      return children;
 };
 
