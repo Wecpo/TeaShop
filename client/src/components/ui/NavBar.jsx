@@ -1,9 +1,13 @@
 import { NavLink } from "react-router-dom";
+import NavProfile from "./navProfile";
+import { useSelector } from "react-redux";
+import { getIsLoggedIn } from "../../store/users";
 
 const NavBar = () => {
+     const isLoggedIn = useSelector(getIsLoggedIn());
      return (
           <nav className="bg-white border-gray-200 ">
-               <div className="max-w-screen-xl flex flex-wrap items-center justify-center mx-auto p-4">
+               <div className="max-w-screen-xl flex flex-wrap items-center justify-center mx-auto p-10">
                     <div
                          className="hidden w-full md:block md:w-auto"
                          id="navbar-default"
@@ -33,6 +37,13 @@ const NavBar = () => {
                                    >
                                         Корзина
                                    </NavLink>
+                              </li>
+                              <li>
+                                   {isLoggedIn ? (
+                                        <NavProfile />
+                                   ) : (
+                                        <NavLink to={`/login`}>Войти</NavLink>
+                                   )}
                               </li>
                          </ul>
                     </div>

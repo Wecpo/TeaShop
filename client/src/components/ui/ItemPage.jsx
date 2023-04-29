@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { useParams } from "react-router";
-import { getTeaById } from "../store/tea";
-import Loader from "./ui/loader";
+import { getTeaById } from "../../store/tea";
+import Loader from "./loader";
 
 const ItemPage = () => {
      const { id } = useParams();

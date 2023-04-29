@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
-import Footer from "../Footer/Footer";
-import NavBar from "../NavBar/NavBar";
+import Footer from "../ui/Footer";
+import NavBar from "../ui/NavBar";
 import ItemCard from "./ItemCard";
 import { getTeaList } from "../../store/tea";
 import { paginate } from "../../utils/paginate";
