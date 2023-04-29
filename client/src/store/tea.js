@@ -30,6 +30,12 @@ const { teaRequested, teaReceived, teaRequestFailed } = actions;
 
 export const getTeaList = () => (state) => state.tea.entities;
 
+export const getTeaById = (teaId) => (state) => {
+     if (state.tea.entities) {
+          return state.tea.entities.find((tea) => tea._id === teaId);
+     }
+};
+
 export const loadTeaList = () => async (dispatch) => {
      dispatch(teaRequested());
      try {
