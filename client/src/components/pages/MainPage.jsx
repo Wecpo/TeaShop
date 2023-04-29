@@ -1,12 +1,12 @@
 import { useSelector } from "react-redux";
-import Footer from "../../Footer/Footer";
-import NavBar from "../../NavBar/NavBar";
-import ItemPage from "../ItemPage/ItemPage";
-import { getTeaList } from "../../../store/tea";
-import { paginate } from "../../../utils/paginate";
-import Pagination from "./pagination";
+import Footer from "../Footer/Footer";
+import NavBar from "../NavBar/NavBar";
+import ItemCard from "./ItemCard";
+import { getTeaList } from "../../store/tea";
+import { paginate } from "../../utils/paginate";
+import Pagination from "../ui/pagination";
 import { useEffect, useState } from "react";
-import Loader from "../../ui/loader";
+import Loader from "../ui/loader";
 
 const MainPage = () => {
      const teaList = useSelector(getTeaList());
@@ -37,7 +37,7 @@ const MainPage = () => {
                          Приветствуем Вас в нашем магазине TeaShop
                     </h1>
                     <NavBar />
-                    <ItemPage teaList={cropTea} />
+                    <ItemCard teaList={cropTea} />
                     <Pagination
                          itemsCount={count}
                          pageSize={pageSize}
