@@ -25,6 +25,9 @@ const ItemCard = ({ teaList }) => {
                     <span className="text-sm text-gray-500 dark:text-gray-400">
                          {tea.about}
                     </span>
+                    <span className="text-sm text-gray-500 dark:text-gray-400">
+                         {tea.price}р
+                    </span>
                     <div className="flex mt-4 space-x-3 md:mt-6">
                          <NavLink
                               to={`/tea/${tea._id}`}

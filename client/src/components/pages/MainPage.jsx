@@ -15,7 +15,7 @@ const MainPage = () => {
      const [currentPage, setCurrentPage] = useState(1);
      const pageSize = 3;
      const [isLoading, setIsloading] = useState(true);
-     const [sortBy, setSortBy] = useState({ path: "price", order: "desc" });
+     const [sortBy, setSortBy] = useState(``);
 
      useEffect(() => {
           if (teaList) setIsloading(false);
