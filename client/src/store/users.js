@@ -29,12 +29,12 @@ const usersSlice = createSlice({
           usersRequested: (state) => {
                state.isLoading = true;
           },
-          usersReceved: (state, action) => {
+          usersReceived: (state, action) => {
                state.entities = action.payload;
                state.dataLoaded = true;
                state.isLoading = false;
           },
-          usersRequestFiled: (state, action) => {
+          usersRequestFailed: (state, action) => {
                state.error = action.payload;
                state.isLoading = false;
           },
@@ -70,8 +70,8 @@ const usersSlice = createSlice({
 const { reducer: usersReducer, actions } = usersSlice;
 const {
      usersRequested,
-     usersReceved,
-     usersRequestFiled,
+     usersReceived,
+     usersRequestFailed,
      authRequestFailed,
      authRequestSuccess,
      userLoggedOut,
@@ -120,9 +120,9 @@ export const loadUsersList = () => async (dispatch) => {
      dispatch(usersRequested());
      try {
           const { content } = await userService.get();
-          dispatch(usersReceved(content));
+          dispatch(usersReceived(content));
      } catch (error) {
-          dispatch(usersRequestFiled(error.message));
+          dispatch(usersRequestFailed(error.message));
      }
 };
 export const updateUser = (payload) => async (dispatch) => {

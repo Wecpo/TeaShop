@@ -1,10 +1,12 @@
 import { NavLink } from "react-router-dom";
 import NavProfile from "./navProfile";
 import { useSelector } from "react-redux";
-import { getIsLoggedIn } from "../../store/users";
+import { getCurrentUserData, getIsLoggedIn } from "../../store/users";
 
 const NavBar = () => {
      const isLoggedIn = useSelector(getIsLoggedIn());
+     const currentUser = useSelector(getCurrentUserData());
+     const itemsCount = currentUser.cart.length;
      return (
           <nav className="bg-white border-gray-200 ">
                <div className="max-w-screen-xl flex flex-wrap items-center justify-center mx-auto p-10">
@@ -29,14 +31,7 @@ const NavBar = () => {
                                         О нас
                                    </NavLink>
                               </li>
-                              <li>
-                                   <NavLink
-                                        to={`/cart`}
-                                        className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                                   >
-                                        Корзина
-                                   </NavLink>
-                              </li>
+
                               <li>
                                    {isLoggedIn ? (
                                         <NavProfile />
@@ -46,6 +41,17 @@ const NavBar = () => {
                               </li>
                          </ul>
                     </div>
+                    <button className="relative inline-flex items-center px-4 py-2.5 text-m font-medium text-center text-black  rounded-lg">
+                         <NavLink
+                              to={`/cart`}
+                              className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
+                         >
+                              Корзина
+                              <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -right-2 dark:border-gray-900">
+                                   {itemsCount}
+                              </div>
+                         </NavLink>
+                    </button>
                </div>
           </nav>
      );

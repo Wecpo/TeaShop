@@ -9,11 +9,13 @@ import AboutPage from "./components/pages/AboutPage";
 import Login from "./layouts/login";
 import AppLoader from "./components/hoc/appLoader";
 import LogOut from "./layouts/logOut";
+import { loadUsersList } from "./store/users";
 
 function App() {
      const dispatch = useDispatch();
 
      dispatch(loadTeaList());
+     dispatch(loadUsersList());
 
      return (
           <AppLoader>

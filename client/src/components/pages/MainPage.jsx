@@ -37,6 +37,7 @@ const MainPage = () => {
                          Приветствуем Вас в нашем магазине TeaShop
                     </h1>
                     <NavBar />
+
                     <ItemCard teaList={cropTea} />
                     <Pagination
                          itemsCount={count}

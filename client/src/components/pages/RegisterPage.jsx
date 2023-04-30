@@ -5,6 +5,7 @@ import RadioField from "../form/radioField";
 import { validator } from "../../utils/validator";
 import { signUp } from "../../store/users";
 import CheckBoxField from "../form/checkBoxField";
+import { useNavigate } from "react-router";
 
 const RegisterPage = () => {
      const dispatch = useDispatch();
@@ -18,7 +19,7 @@ const RegisterPage = () => {
           licence: false,
      });
      const [errors, setErrors] = useState({});
-
+     const navigate = useNavigate();
      const handleChange = (target) => {
           setData((prevState) => ({
                ...prevState,
@@ -78,13 +79,14 @@ const RegisterPage = () => {
      const isValid = Object.keys(errors).length === 0;
 
      const handleSubmit = (e) => {
-          console.log(`yo`);
           e.preventDefault();
           const isValid = validate();
           if (!isValid) return;
           const newData = {
                ...data,
           };
+
+          navigate(`/`);
           dispatch(signUp(newData));
      };
 

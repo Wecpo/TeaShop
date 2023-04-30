@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import { getTeaById } from "../../store/tea";
 import Loader from "../ui/loader";
 import BackButton from "../ui/BackButton";
+import ToCartButton from "../ui/ToCartButton";
 
 const ItemPage = () => {
      const { id } = useParams();
@@ -10,31 +11,24 @@ const ItemPage = () => {
 
      if (tea) {
           return (
-               <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 m-3">
+               <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow">
                     <BackButton />
                     <img
                          className="p-8 rounded-t-lg"
                          src={tea.image}
                          alt="tea image"
                     />
-
                     <div className="px-5 pb-5">
-                         <a href="#">
-                              <h1 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
-                                   {tea.name}
-                              </h1>
-                         </a>
+                         <h3>{tea.about}</h3>
+                         <h1 className="text-xl font-semibold tracking-tight text-gray-900">
+                              {tea.name}
+                         </h1>
 
                          <div className="flex items-center justify-between">
-                              <span className="text-3xl font-bold text-gray-900 dark:text-white">
+                              <span className="text-3xl font-bold text-gray-900">
                                    {tea.price}р
                               </span>
-                              <a
-                                   href="#"
-                                   className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center "
-                              >
-                                   Добавить в корзину
-                              </a>
+                              <ToCartButton id={tea._id} />
                          </div>
                     </div>
                </div>
