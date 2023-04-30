@@ -21,6 +21,9 @@ const schema = new Schema(
           image: {
                type: String,
           },
+          cart: {
+               type: Array,
+          },
      },
      {
           timestamps: true,
