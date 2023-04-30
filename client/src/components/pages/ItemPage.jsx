@@ -1,7 +1,8 @@
 import { useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { getTeaById } from "../../store/tea";
-import Loader from "./loader";
+import Loader from "../ui/loader";
+import BackButton from "../ui/BackButton";
 
 const ItemPage = () => {
      const { id } = useParams();
@@ -10,6 +11,7 @@ const ItemPage = () => {
      if (tea) {
           return (
                <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 m-3">
+                    <BackButton />
                     <img
                          className="p-8 rounded-t-lg"
                          src={tea.image}
@@ -29,7 +31,7 @@ const ItemPage = () => {
                               </span>
                               <a
                                    href="#"
-                                   className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                   className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center "
                               >
                                    Добавить в корзину
                               </a>

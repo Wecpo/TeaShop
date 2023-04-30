@@ -1,5 +1,12 @@
+import BackButton from "../ui/BackButton";
+
 const AboutPage = () => {
-     return <h1>About page</h1>;
+     return (
+          <>
+               <BackButton />
+               <h1>About page</h1>
+          </>
+     );
 };
 
 export default AboutPage;

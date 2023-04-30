@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { loadTeaList } from "./store/tea";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NotFoundPage from "./components/pages/NotFoundPage";
-import ItemPage from "./components/ui/ItemPage";
+import ItemPage from "./components/pages/ItemPage";
 import CartPage from "./components/pages/CartPage";
 import AboutPage from "./components/pages/AboutPage";
 import Login from "./layouts/login";

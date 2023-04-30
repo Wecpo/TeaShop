@@ -114,9 +114,9 @@ const RegisterPage = () => {
                />
                <RadioField
                     options={[
-                         { name: "Male", value: "male" },
-                         { name: "Female", value: "female" },
-                         { name: "Other", value: "other" },
+                         { name: "Мужской", value: "male" },
+                         { name: "Женский", value: "female" },
+                         { name: "Другое", value: "other" },
                     ]}
                     value={data.sex}
                     name="sex"
@@ -132,7 +132,7 @@ const RegisterPage = () => {
                >
                     Подтвердить <a>лицензионное соглашение</a>
                </CheckBoxField>
-               <button type="submit">Submit</button>
+               <button type="submit">Отправить</button>
           </form>
      );
 };

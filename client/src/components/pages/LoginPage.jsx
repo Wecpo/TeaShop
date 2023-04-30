@@ -51,7 +51,7 @@ const LoginPage = () => {
           const isValid = validate();
           if (!isValid) return;
           dispath(login({ payload: data }));
-          navigate(`/`);
+          navigate(`/ `);
      };
 
      return (
