@@ -2,13 +2,14 @@ import { useSelector } from "react-redux";
 import Footer from "../ui/Footer";
 import NavBar from "../ui/NavBar";
 import ItemCard from "./ItemCard";
-import { getTeaList } from "../../store/tea";
+import { getTeaById, getTeaList } from "../../store/tea";
 import { paginate } from "../../utils/paginate";
 import Pagination from "../ui/pagination";
 import { useEffect, useState } from "react";
 import Loader from "../ui/loader";
 import _ from "lodash";
 import SortButton from "../ui/SortButton";
+import Search from "../ui/search";
 
 const MainPage = () => {
      const teaList = useSelector(getTeaList());
@@ -16,6 +17,7 @@ const MainPage = () => {
      const pageSize = 3;
      const [isLoading, setIsloading] = useState(true);
      const [sortBy, setSortBy] = useState(``);
+     const [searchQuery, setSearchQuery] = useState("");
 
      useEffect(() => {
           if (teaList) setIsloading(false);
@@ -33,15 +35,33 @@ const MainPage = () => {
           setCurrentPage(pageIndex);
      };
 
+     const handleSearchQuery = ({ target }) => {
+          setSearchQuery(target.value);
+     };
+
+     function filterUsers(data) {
+          const filteredTea = searchQuery
+               ? data.filter(
+                      (tea) =>
+                           tea.name
+                                .toLowerCase()
+                                .indexOf(searchQuery.toLowerCase()) !== -1
+                 )
+               : data;
+          return filteredTea;
+     }
+
+     const filteredUsers = filterUsers(teaList);
+
      const getCount = (list) => {
           if (!isLoading) {
                return list.length;
           }
      };
 
-     const sortedTea = _.orderBy(teaList, [sortBy.path], [sortBy.order]);
-     const count = getCount(teaList);
-     const cropTea = paginate(sortedTea, currentPage, pageSize);
+     const sortedTea = _.orderBy(filteredUsers, [sortBy.path], [sortBy.order]);
+     const count = getCount(sortedTea);
+     const cropTea = paginate(filteredUsers, currentPage, pageSize);
 
      if (!isLoading) {
           return (
@@ -50,6 +70,11 @@ const MainPage = () => {
                          Приветствуем Вас в нашем магазине TeaShop
                     </h1>
                     <NavBar />
+                    <Search
+                         placeholder={`Поиск по названию`}
+                         handleSearchQuery={handleSearchQuery}
+                         searchQuery={searchQuery}
+                    />
                     <SortButton onSort={handleSort} />
                     <ItemCard teaList={cropTea} />
                     <Pagination
