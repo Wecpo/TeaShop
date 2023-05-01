@@ -1,7 +1,7 @@
 const Search = ({ handleSearchQuery, searchQuery, placeholder }) => {
      return (
           <input
-               className="w-full"
+               className="w-full m-5"
                type="text"
                name="searchQuery"
                placeholder={placeholder}

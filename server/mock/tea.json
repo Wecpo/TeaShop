@@ -1,58 +1,86 @@
 [
      {
-          "id": 1,
           "name": "Черный чай",
+          "category": "tea",
           "price": 300,
           "about": "Вкусный черный чай",
           "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/93/f6/d5d68f02be74a9d3da20fc66b49a.jpeg"
      },
      {
-          "id": 2,
           "name": "Зеленый чай",
+          "category": "tea",
           "price": 320,
           "about": "Вкусный зеленый чай",
           "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/09/26/bb9242167f20db76f9b4f646bfd5.jpeg"
      },
      {
-          "id": 3,
           "name": "Красный чай",
+          "category": "tea",
           "price": 340,
           "about": "Вкусный красный чай",
           "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/19/27/713c084ce4ec47ecaaea052b32cd.jpeg"
      },
      {
-          "id": 4,
           "name": "Пуэр",
+          "category": "tea",
           "price": 400,
           "about": "Вкусный пуэр",
           "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/33/b9/8d2864f7afbd774d3f96d9e3bbfd.jpeg"
      },
      {
-          "id": 5,
           "name": "Улун",
+          "category": "tea",
           "price": 280,
           "about": "Вкусный улун",
           "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/69/98/baafbcddcf68b44e7e9155f9be1e.jpeg"
      },
      {
-          "id": 6,
           "name": "Белый чай",
+          "category": "tea",
           "price": 330,
           "about": "Вкусный белый чай",
           "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/31/be/bb6d906476a4f292cc772c9d6bca.jpeg"
      },
      {
-          "id": 7,
           "name": "Тайский чай",
+          "category": "herbal-tea",
           "price": 410,
           "about": "Вкусный тайский чай",
           "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/62/86/f61199fb93a77a13347233fcc927.jpeg"
      },
      {
-          "id": 8,
           "name": "Габа чай",
+          "category": "tea",
           "price": 400,
           "about": "Вкусный габа чай",
           "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/b2/41/f7909015785072733f696037ce88.jpeg"
+     },
+     {
+          "name": "Иван-чай",
+          "category": "herbal-tea",
+          "price": 190,
+          "about": "Трявяной иван-чай",
+          "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/cf/f1/c5ff90fdf943c6a133baf27e1e2a.jpeg"
+     },
+     {
+          "name": "Алтайский чай",
+          "category": "herbal-tea",
+          "price": 320,
+          "about": "Алтайский травяной чай",
+          "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/c1/09/d5acc269afc30188b76d3080bf8a.jpeg"
+     },
+     {
+          "name": "Гречишный чай",
+          "category": "herbal-tea",
+          "price": 340,
+          "about": "Гречишный чай Ку Цяо",
+          "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/44/d2/c5b2196908b73d4922b0a4aace32.jpeg"
+     },
+     {
+          "name": "Каркаде",
+          "category": "herbal-tea",
+          "price": 400,
+          "about": "Цветочный чай каркаде (гибискус)",
+          "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/19/7e/16b4be7807ab804106534179edf4.jpeg"
      }
 ]

@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import Footer from "../ui/Footer";
 import NavBar from "../ui/NavBar";
 import ItemCard from "./ItemCard";
-import { getTeaById, getTeaList } from "../../store/tea";
+import { getTeaList } from "../../store/tea";
 import { paginate } from "../../utils/paginate";
 import Pagination from "../ui/pagination";
 import { useEffect, useState } from "react";
@@ -10,14 +10,16 @@ import Loader from "../ui/loader";
 import _ from "lodash";
 import SortButton from "../ui/SortButton";
 import Search from "../ui/search";
+import GroupList from "../ui/groupList";
 
 const MainPage = () => {
      const teaList = useSelector(getTeaList());
      const [currentPage, setCurrentPage] = useState(1);
-     const pageSize = 3;
+     const pageSize = 4;
      const [isLoading, setIsloading] = useState(true);
      const [sortBy, setSortBy] = useState(``);
      const [searchQuery, setSearchQuery] = useState("");
+     const [selectedCategory, setSelectedCategory] = useState(``);
 
      useEffect(() => {
           if (teaList) setIsloading(false);
@@ -25,10 +27,14 @@ const MainPage = () => {
 
      const handleSort = () => {
           setSortBy(
-               sortBy.order === `asc`
-                    ? { path: "price", order: "desc" }
-                    : { path: "price", order: "asc" }
+               sortBy.order === `desc`
+                    ? { path: "price", order: "asc" }
+                    : { path: "price", order: "desc" }
           );
+     };
+
+     const handleChangeCategory = (item) => {
+          setSelectedCategory(item);
      };
 
      const handlePageChange = (pageIndex) => {
@@ -39,7 +45,7 @@ const MainPage = () => {
           setSearchQuery(target.value);
      };
 
-     function filterUsers(data) {
+     function filterTea(data) {
           const filteredTea = searchQuery
                ? data.filter(
                       (tea) =>
@@ -47,11 +53,13 @@ const MainPage = () => {
                                 .toLowerCase()
                                 .indexOf(searchQuery.toLowerCase()) !== -1
                  )
+               : selectedCategory
+               ? data.filter((tea) => tea.category === selectedCategory)
                : data;
           return filteredTea;
      }
 
-     const filteredUsers = filterUsers(teaList);
+     const filteredTea = filterTea(teaList);
 
      const getCount = (list) => {
           if (!isLoading) {
@@ -59,9 +67,9 @@ const MainPage = () => {
           }
      };
 
-     const sortedTea = _.orderBy(filteredUsers, [sortBy.path], [sortBy.order]);
+     const sortedTea = _.orderBy(filteredTea, [sortBy.path], [sortBy.order]);
      const count = getCount(sortedTea);
-     const cropTea = paginate(filteredUsers, currentPage, pageSize);
+     const cropTea = paginate(sortedTea, currentPage, pageSize);
 
      if (!isLoading) {
           return (
@@ -76,6 +84,10 @@ const MainPage = () => {
                          searchQuery={searchQuery}
                     />
                     <SortButton onSort={handleSort} />
+                    <GroupList
+                         teaCategories={teaList}
+                         onChange={handleChangeCategory}
+                    />
                     <ItemCard teaList={cropTea} />
                     <Pagination
                          itemsCount={count}
