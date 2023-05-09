@@ -85,7 +85,6 @@ const RegisterPage = () => {
           const newData = {
                ...data,
           };
-
           navigate(`/`);
           dispatch(signUp(newData));
      };

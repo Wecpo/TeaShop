@@ -12,7 +12,7 @@ const LoginPage = () => {
           password: "",
           stayOn: false,
      });
-     const dispath = useDispatch();
+     const dispatch = useDispatch();
      const navigate = useNavigate();
      const [errors, setErrors] = useState({});
 
@@ -50,7 +50,8 @@ const LoginPage = () => {
           e.preventDefault();
           const isValid = validate();
           if (!isValid) return;
-          dispath(login({ payload: data }));
+          dispatch(login({ payload: data }));
+
           navigate(`/ `);
      };
 

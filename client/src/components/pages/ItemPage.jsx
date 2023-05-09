@@ -24,7 +24,7 @@ const ItemPage = () => {
                               {tea.name}
                          </h1>
 
-                         <div className="flex items-center justify-between">
+                         <div className="flex items-center justify-between mt-4 space-x-3 md:mt-6">
                               <span className="text-3xl font-bold text-gray-900">
                                    {tea.price}р
                               </span>

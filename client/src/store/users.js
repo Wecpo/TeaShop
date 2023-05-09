@@ -64,6 +64,32 @@ const usersSlice = createSlice({
           authRequested: (state) => {
                state.error = null;
           },
+          userCartAddItemRequested: (state) => {
+               state.isLoading = true;
+          },
+          userCartAddItemReceived: (state, action) => {
+               state.entities[
+                    state.entities.findIndex((u) => u._id === state.auth.userId)
+               ].cart = action.payload;
+               state.dataLoaded = true;
+               state.isLoading = false;
+          },
+          userCartAddItemFailed: (state, action) => {
+               state.error = action.payload;
+          },
+          userCartRemoveItemRequested: (state) => {
+               state.isLoading = true;
+          },
+          userCartRemoveItemReceived: (state, action) => {
+               state.entities[
+                    state.entities.findIndex((u) => u._id === state.auth.userId)
+               ].cart = action.payload;
+               state.dataLoaded = true;
+               state.isLoading = false;
+          },
+          userCartRemoveItemFailed: (state, action) => {
+               state.error = action.payload;
+          },
      },
 });
 
@@ -76,11 +102,41 @@ const {
      authRequestSuccess,
      userLoggedOut,
      userUpdateSuccessed,
+     userCartAddItemRequested,
+     userCartAddItemReceived,
+     userCartAddItemFailed,
+     userCartRemoveItemFailed,
+     userCartRemoveItemRequested,
+     userCartRemoveItemReceived,
 } = actions;
 
 const authRequested = createAction("users/authRequested");
 const userUpdateFailed = createAction("users/userUpdateFailed");
 const userUpdateRequested = createAction("users/userUpdateRequested");
+
+export const incrementItemInCart = (payload) => async (dispatch) => {};
+
+export const decrementItemInCart = (payload) => async (dispatch) => {};
+
+export const addItemToUserCart = (payload) => async (dispatch) => {
+     dispatch(userCartAddItemRequested());
+     try {
+          const { cart } = await userService.updateCart(payload);
+          dispatch(userCartAddItemReceived(cart));
+     } catch (error) {
+          userCartAddItemFailed(error.message);
+     }
+};
+
+export const removeItemFromUserCart = (payload) => async (dispatch) => {
+     dispatch(userCartRemoveItemRequested());
+     try {
+          const { cart } = await userService.updateCart(payload);
+          dispatch(userCartRemoveItemReceived(cart));
+     } catch (error) {
+          userCartRemoveItemFailed(error.message);
+     }
+};
 
 export const login =
      ({ payload }) =>

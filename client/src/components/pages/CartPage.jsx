@@ -8,11 +8,10 @@ import ItemCard from "./ItemCard";
 const CartPage = () => {
      const currentUser = useSelector(getCurrentUserData());
      const teaList = useSelector(getTeaList());
-
-     if (currentUser.cart.length === 0) {
+     const userCart = currentUser.cart;
+     if (userCart.length === 0) {
           return (
                <>
-                    {" "}
                     <BackButton />
                     <hr />
                     <h1>Упс, в вашей корзине пусто {`:(`}</h1>
@@ -21,31 +20,33 @@ const CartPage = () => {
      }
 
      const getTeaFromIds = (teaList, ids) => {
-          return ids.map((id) => {
-               return teaList.filter((tea) => tea._id === id);
+          return ids.map((item) => {
+               return teaList.filter((tea) => tea._id === item.id);
           });
      };
 
      const getCartPrice = (cart) => {
           let sum = 0;
           cart.map((item) => {
-               sum += item[0].price;
+               sum += item.price;
                return sum;
           });
           return sum;
      };
 
      if (teaList !== null) {
-          const teaInCart = getTeaFromIds(teaList, currentUser.cart);
-          const cartPrice = getCartPrice(teaInCart);
+          const itemsInCart = getTeaFromIds(teaList, userCart);
+
+          const cartPrice = getCartPrice(itemsInCart);
           return (
-               <>
+               <div className="bg-slate-100">
                     <BackButton />
-                    {teaInCart.map((tea) => (
+                    {itemsInCart.map((tea) => (
                          <ItemCard teaList={tea} />
                     ))}
-                    <h1>Итого: {cartPrice}</h1>
-               </>
+                    <h1>Итого: {cartPrice}р</h1>
+                    <button>Заказать</button>
+               </div>
           );
      } else return <Loader />;
 };

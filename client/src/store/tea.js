@@ -15,8 +15,8 @@ const teaSlice = createSlice({
           },
           teaReceived: (state, action) => {
                state.entities = action.payload;
-               // state.dataLoaded = true;
-               // state.isLoading = false;
+               state.dataLoaded = true;
+               state.isLoading = false;
           },
      },
 });

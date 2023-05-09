@@ -8,6 +8,7 @@ const userService = {
           const { data } = await httpService.get(userEndpoint);
           return data;
      },
+
      create: async (payload) => {
           const { data } = await httpService.put(
                userEndpoint + payload._id,
@@ -27,6 +28,14 @@ const userService = {
                payload
           );
           return data;
+     },
+     updateCart: async (payload) => {
+          console.log(payload);
+          const { data } = await httpService.patch(
+               userEndpoint + localStorageService.getUserId(),
+               payload
+          );
+          return data.content;
      },
 };
 export default userService;

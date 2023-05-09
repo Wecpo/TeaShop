@@ -35,12 +35,12 @@ router.post(`/signUp`, [
                }
 
                const hashedPassword = await bcrypt.hash(password, 12);
-
                const newUser = await User.create({
                     name: email,
                     ...req.body,
                     password: hashedPassword,
                });
+               console.log(newUser);
 
                const tokens = tokenService.generate({ _id: newUser._id });
                await tokenService.save(newUser._id, tokens.refreshToken);
