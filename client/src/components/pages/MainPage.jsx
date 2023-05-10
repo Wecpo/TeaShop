@@ -14,7 +14,9 @@ import GroupList from "../ui/groupList";
 
 const MainPage = () => {
      const teaList = useSelector(getTeaList());
-     const [currentPage, setCurrentPage] = useState(1);
+     const [currentPage, setCurrentPage] = useState(
+          localStorage.getItem(`paginatePage`) || 1
+     );
      const pageSize = 4;
      const [isLoading, setIsloading] = useState(true);
      const [sortBy, setSortBy] = useState(``);
@@ -34,11 +36,13 @@ const MainPage = () => {
      };
 
      const handleChangeCategory = (item) => {
+          setCurrentPage(1);
           setSelectedCategory(item);
      };
 
      const handlePageChange = (pageIndex) => {
           setCurrentPage(pageIndex);
+          localStorage.setItem(`paginatePage`, pageIndex);
      };
 
      const handleSearchQuery = ({ target }) => {

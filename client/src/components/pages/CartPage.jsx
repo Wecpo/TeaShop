@@ -9,6 +9,7 @@ const CartPage = () => {
      const currentUser = useSelector(getCurrentUserData());
      const teaList = useSelector(getTeaList());
      const userCart = currentUser.cart;
+
      if (userCart.length === 0) {
           return (
                <>
@@ -21,15 +22,20 @@ const CartPage = () => {
 
      const getTeaFromIds = (teaList, ids) => {
           return ids.map((item) => {
-               return teaList.filter((tea) => tea._id === item.id);
+               const teaListInCart = [];
+               teaList.map((tea) => {
+                    if (tea._id === item.id) {
+                         teaListInCart.push({ ...tea, count: item.count });
+                    }
+               });
+               return teaListInCart;
           });
      };
 
      const getCartPrice = (cart) => {
           let sum = 0;
           cart.map((item) => {
-               sum += item.price;
-               return sum;
+               sum += item[0].price * item[0].count;
           });
           return sum;
      };
@@ -37,14 +43,14 @@ const CartPage = () => {
      if (teaList !== null) {
           const itemsInCart = getTeaFromIds(teaList, userCart);
 
-          const cartPrice = getCartPrice(itemsInCart);
           return (
                <div className="bg-slate-100">
                     <BackButton />
+
                     {itemsInCart.map((tea) => (
-                         <ItemCard teaList={tea} />
+                         <ItemCard key={tea[0]._id} teaList={tea} />
                     ))}
-                    <h1>Итого: {cartPrice}р</h1>
+                    <h1>Итого: {getCartPrice(itemsInCart)}р</h1>
                     <button>Заказать</button>
                </div>
           );

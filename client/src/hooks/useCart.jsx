@@ -46,7 +46,6 @@ const useCart = () => {
           const itemInCartIndex = cart.findIndex((item) => item.id === id);
           let count = currentUser.cart[itemInCartIndex].count;
           count--;
-          console.log(count);
           if (count < 1) {
                removeFromCart(id);
           } else {
