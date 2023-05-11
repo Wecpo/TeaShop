@@ -42,7 +42,7 @@ const MainPage = () => {
 
      const handlePageChange = (pageIndex) => {
           setCurrentPage(pageIndex);
-          localStorage.setItem(`paginatePage`, pageIndex);
+          localStorage.setItem(`currentPaginatePage`, pageIndex);
      };
 
      const handleSearchQuery = ({ target }) => {

@@ -10,6 +10,7 @@ import Login from "./layouts/login";
 import AppLoader from "./components/hoc/appLoader";
 import LogOut from "./layouts/logOut";
 import { loadUsersList } from "./store/users";
+import Start from "./layouts/start";
 
 function App() {
      const dispatch = useDispatch();
@@ -21,7 +22,7 @@ function App() {
           <AppLoader>
                <BrowserRouter>
                     <Routes>
-                         <Route path="/" element={<MainPage />} />
+                         <Route path="/" element={<Start />} />
                          <Route path="/404" element={<NotFoundPage />} />
                          <Route path="/tea/:id" element={<ItemPage />} />
                          <Route path="/cart" element={<CartPage />} />

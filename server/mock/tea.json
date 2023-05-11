@@ -1,86 +1,121 @@
 [
      {
-          "name": "Черный чай",
-          "category": "tea",
-          "price": 300,
-          "about": "Вкусный черный чай",
+          "name": "Пуэр Шу «Мэнхайский пломбир»",
+          "category": "Пуэры",
+          "price": 660,
+          "about": "Одна из лучших находок нового года среди пуэров! Это шу пуэр из уезда Мэнхай, приготовленный на небольшой частной фабрике Чунь Пу Нун Цзя.",
+          "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/64/d0/a4c437d69c622af248e500570350.jpg"
+     },
+     {
+          "name": "Пуэр Шу Гунтин «Императорский дар»",
+          "category": "Пуэры",
+          "price": 500,
+          "about": "За свой ценник — просто сказка. Взял себе в качестве «портфельного» чая на этот месяц, чтобы заваривать на внеплановых встречах с друзьями, на природе и на студии.",
+          "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/2a/83/10f788b7e998f4e22396b3cfa069.jpg"
+     },
+     {
+          "name": "Пуэр Шу «Ча Гао» смола пуэра премиум",
+          "category": "Пуэры",
+          "price": 115,
+          "about": "Одна такая маленькая плиточка впитала в себя все самые полезные чайные вещества, которые есть в пуэре. Ее удобно хранить и удобно заваривать дома или на работе, в термосе или в обычной кружке.",
+          "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/7e/c4/30501576c10f5cb3ae85a25f53db.jpeg"
+     },
+     {
+          "name": "Пуэр Шу Гунтин «Дворцовый Линьцан»",
+          "category": "Пуэры",
+          "price": 610,
+          "about": "Питкий, бодрый, маслянистый кирпич с мощным тонизирующим воздействием, при этом по доступной цене — идеальное сочетание для попадания в сердце любого пуэромана.",
+          "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/80/1c/74451f6ef4d4c5c1e9ccf1a644a7.jpg"
+     },
+     {
+          "name": "Цзинь Хуа Аньхуа Хэй Ча",
+          "category": "Черный чай",
+          "price": 822,
+          "about": "Перед вами редкий и самобытный, выдержанный Хэй Ча с севера провинции Хунань — уезда Аньхой. Эта провинция с многовековым опытом производства чая. В прошлом через Хунань проходил знаменитый чайный путь.",
+          "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/c7/ae/fbeca7f8cfa579ba99c155ef90a2.jpg"
+     },
+     {
+          "name": "Лю Ань Хэй Ча Хунань",
+          "category": "Черный чай",
+          "price": 650,
+          "about": "Отличительные свойства Хэй Ча приобретает в результате влажного скирдования – Во Дуй (технология шу пуэра) и последующей сушке на сосновых дровах.",
+          "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/ec/70/b9b1f60f708879b504c15e654fb9.jpeg"
+     },
+     {
+          "name": "Сычуань Хэй Ча",
+          "category": "Черный чай",
+          "price": 1140,
+          "about": "Традиционный китайский черный чай Хэй Ча, собранный близ города Яань (провинция Сычуань). Приятное концентрирующее воздействие и мягкий, сладковатый вкус с нотами горького шоколада. ",
           "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/93/f6/d5d68f02be74a9d3da20fc66b49a.jpeg"
      },
      {
-          "name": "Зеленый чай",
-          "category": "tea",
-          "price": 320,
-          "about": "Вкусный зеленый чай",
-          "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/09/26/bb9242167f20db76f9b4f646bfd5.jpeg"
+          "name": "Дянь Хун Маофэн «Ворсистые пики»",
+          "category": "Красный чай",
+          "price": 866,
+          "about": "Дянь Хун Маофэн родом из провинции Юньнань, которая славится не только своими пуэрами, но и бомбическими красными чаями. Их приятная терпкость, невероятный аромат, доброе согревающее воздействие и обилие самых разных оттенков",
+          "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/0e/bb/1df5085556d7843e9034f88ceb17.jpeg"
      },
      {
-          "name": "Красный чай",
-          "category": "tea",
-          "price": 340,
-          "about": "Вкусный красный чай",
+          "name": "Дянь Хун Да Цзинь Чжень «Золотые иглы»",
+          "category": "Красный чай",
+          "price": 2950,
+          "about": "Дянь Хун Да Цзинь Чжень «Королевские золотые иглы» – высокосортный свежий красный чай из Юньнани. Приготовлен исключительно из нежных ворсистых чайных почек. Мощный, ароматный и красивый чай с согревающе-тонизирующим воздействием.",
           "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/19/27/713c084ce4ec47ecaaea052b32cd.jpeg"
      },
      {
-          "name": "Пуэр",
-          "category": "tea",
-          "price": 400,
-          "about": "Вкусный пуэр",
-          "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/33/b9/8d2864f7afbd774d3f96d9e3bbfd.jpeg"
+          "name": "Дянь Хун Би Ло «Изумрудные спирали весны»",
+          "category": "Красный чай",
+          "price": 1300,
+          "about": "Дянь Хун Би Ло «Изумрудные спирали весны» – высококачественный красный чай из Юньнани, произведенный из чайных почек и верхних листочков.",
+          "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/dd/74/1ac5f0de732f1acd32f90fa7d0a6.jpeg"
      },
      {
-          "name": "Улун",
-          "category": "tea",
-          "price": 280,
-          "about": "Вкусный улун",
-          "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/69/98/baafbcddcf68b44e7e9155f9be1e.jpeg"
+          "name": "Моли Лун Чжу «Жемчужина дракона»",
+          "category": "Зеленый чай",
+          "price": 1510,
+          "about": "Зеленый чай Моли Лун Чжу (茉莉龙珠 molilongzhu) «Жасминовая жемчужина дракона» – превосходное сочетание классического вкуса зеленого чая с ароматом жасмина.",
+          "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/91/e0/3a5fe4a40e2d64ebc03d3285ccf6.jpeg"
      },
      {
-          "name": "Белый чай",
-          "category": "tea",
-          "price": 330,
-          "about": "Вкусный белый чай",
-          "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/31/be/bb6d906476a4f292cc772c9d6bca.jpeg"
+          "name": "Зеленый краснодарский чай «Пей молодей»",
+          "category": "Зеленый чай",
+          "price": 1200,
+          "about": "Свежий зеленый чай с мацестинских плантаций. Полностью органический, без удобрений и орошения. Максимально полезный, так как сохранил в своем листе все многообразие полезных и минеральных веществ, которые впитал из плодородной земли Краснодарского края.",
+          "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/46/59/0cd93f35c92ed062b919d6ea09b3.jpeg"
      },
      {
-          "name": "Тайский чай",
-          "category": "herbal-tea",
-          "price": 410,
-          "about": "Вкусный тайский чай",
+          "name": "Лунцзин «Колодец дракона»",
+          "category": "Зеленый чай",
+          "price": 3000,
+          "about": "Премиальный зеленый Лунцзин из высокосортного сырья, собранный весной этого года в местечке Ханьчжоу, провинции Чжэцзян. Чистая классика зеленых чаев.",
+          "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/6d/ef/9f5474cc140e2353ca6c5f68ef13.jpeg"
+     },
+     {
+          "name": "Е Шен «Дикорастущий» HQ",
+          "category": "Зеленый чай",
+          "price": 1700,
+          "about": "Дикорастущий зеленый чай Е Шен Люй Ча (野生绿茶 yesheng lucha) – знаменитый классический зеленый чай собирается с диких чайных кустов в провинции Сычуань.",
+          "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/28/78/1ae63aec7dfa102441c699bc4bbd.jpeg"
+     },
+     {
+          "name": "Тайский чай «Анчан» синий",
+          "category": "Цветочный чай",
+          "price": 1000,
+          "about": "Клитория тройчатая, также мотыльковый горошек или синий чай – это вечнозеленое растение родом из Юго-Восточной Азии.",
           "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/62/86/f61199fb93a77a13347233fcc927.jpeg"
      },
      {
-          "name": "Габа чай",
-          "category": "tea",
-          "price": 400,
-          "about": "Вкусный габа чай",
-          "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/b2/41/f7909015785072733f696037ce88.jpeg"
+          "name": "Чай из хризантемы «Цзюй Хуа»",
+          "category": "Цветочный чай",
+          "price": 1300,
+          "about": "Отвар из хризантемы, или Цзюй Хуа (菊花 juhua) с гор Хуаньшань, в Китае вот уже более трех тысячелетий славится своими вкусовыми и лечебными свойствами.",
+          "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/c3/54/ace1e77aaf4a4b5d6cd5d69f1775.jpg"
      },
      {
-          "name": "Иван-чай",
-          "category": "herbal-tea",
-          "price": 190,
-          "about": "Трявяной иван-чай",
-          "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/cf/f1/c5ff90fdf943c6a133baf27e1e2a.jpeg"
-     },
-     {
-          "name": "Алтайский чай",
-          "category": "herbal-tea",
-          "price": 320,
-          "about": "Алтайский травяной чай",
-          "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/c1/09/d5acc269afc30188b76d3080bf8a.jpeg"
-     },
-     {
-          "name": "Гречишный чай",
-          "category": "herbal-tea",
-          "price": 340,
-          "about": "Гречишный чай Ку Цяо",
-          "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/44/d2/c5b2196908b73d4922b0a4aace32.jpeg"
-     },
-     {
-          "name": "Каркаде",
-          "category": "herbal-tea",
-          "price": 400,
-          "about": "Цветочный чай каркаде (гибискус)",
+          "name": "Каркаде (гибискус)",
+          "category": "Цветочный чай",
+          "price": 550,
+          "about": "Каркаде – напиток из цветов Гибискуса (Hibiscus) или Суданской розы.",
           "image": "https://cdn.teaworkshop.ru/media/cache/sylius_shop_api/19/7e/16b4be7807ab804106534179edf4.jpeg"
      }
 ]

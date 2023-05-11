@@ -30,7 +30,6 @@ const userService = {
           return data;
      },
      updateCart: async (payload) => {
-          console.log(payload);
           const { data } = await httpService.patch(
                userEndpoint + localStorageService.getUserId(),
                payload
