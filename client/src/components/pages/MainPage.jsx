@@ -6,7 +6,6 @@ import { getTeaList } from "../../store/tea";
 import { paginate } from "../../utils/paginate";
 import Pagination from "../ui/pagination";
 import { useEffect, useState } from "react";
-import Loader from "../ui/loader";
 import _ from "lodash";
 import SortButton from "../ui/SortButton";
 import Search from "../ui/search";
@@ -15,7 +14,7 @@ import GroupList from "../ui/groupList";
 const MainPage = () => {
      const teaList = useSelector(getTeaList());
      const [currentPage, setCurrentPage] = useState(
-          localStorage.getItem(`paginatePage`) || 1
+          localStorage.getItem(`currentPaginatePage`) || 1
      );
      const pageSize = 4;
      const [isLoading, setIsloading] = useState(true);
@@ -66,9 +65,7 @@ const MainPage = () => {
      const filteredTea = filterTea(teaList);
 
      const getCount = (list) => {
-          if (!isLoading) {
-               return list.length;
-          }
+          return list.length;
      };
 
      const sortedTea = _.orderBy(filteredTea, [sortBy.path], [sortBy.order]);
@@ -104,7 +101,7 @@ const MainPage = () => {
           );
      }
 
-     return <Loader />;
+     // return <Loader />;
 };
 
 export default MainPage;

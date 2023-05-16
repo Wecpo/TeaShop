@@ -1,8 +1,8 @@
 const SortButton = ({ onSort }) => {
      return (
-          <div className="h-5 flex justify-center m-5">
+          <div className="flex justify-center ">
                <div
-                    className="h-5 flex justify-center m-5 hover:bg-blue-100 cursor-pointer"
+                    className="h-5 flex justify-center hover:bg-blue-100 cursor-pointer"
                     onClick={onSort}
                >
                     Сортировать по стоимости

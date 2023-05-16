@@ -1,33 +1,28 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import Loader from "../ui/loader";
 import ToCartButton from "../ui/ToCartButton";
 
 const ItemCard = ({ teaList }) => {
-     if (teaList === null) {
-          return <Loader />;
-     }
      return teaList.map((tea) => (
           <div
                key={tea._id}
-               className="bg-white border border-gray-200 rounded-lg shadow m-10"
+               className="bg-slate-50 border border-gray-200 rounded-lg shadow pt-10 m-5"
           >
-               <div className="flex justify-end px-4 pt-4"></div>
                <div className="flex flex-col items-center pb-10">
-                    <img
-                         className="w-24 h-24 mb-3 rounded-full shadow-lg"
-                         src={tea.image}
-                         alt="Здесь должена быть картинка чая"
-                    />
-                    <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
+                    <NavLink to={`/tea/${tea._id}`}>
+                         <img
+                              className="w-24 h-24 mb-3 rounded-full shadow-lg"
+                              src={tea.image}
+                              alt="Здесь должна быть картинка чая"
+                         />
+                    </NavLink>
+                    <h5 className="mb-1 text-xl font-medium text-gray-900">
                          {tea.name}
                     </h5>
-                    <span className="text-sm text-gray-500 dark:text-gray-400">
+                    <span className="ml-5 text-sm text-gray-500">
                          {tea.about}
                     </span>
-                    <span className="text-sm text-gray-500 dark:text-gray-400">
-                         {tea.price}р
-                    </span>
+                    <span className="text-sm text-gray-600">{tea.price}р</span>
                     <div className="flex mt-4 space-x-3 md:mt-6">
                          <NavLink
                               to={`/tea/${tea._id}`}
