@@ -18,6 +18,9 @@ const teaSlice = createSlice({
                state.dataLoaded = true;
                state.isLoading = false;
           },
+          teaRequestFailed: (state, action) => {
+               state.error = action.payload;
+          },
      },
 });
 

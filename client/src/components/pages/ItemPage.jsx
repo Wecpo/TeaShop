@@ -19,11 +19,11 @@ const ItemPage = () => {
                          alt="tea image"
                     />
                     <div className="px-5 pb-5">
-                         <h3>{tea.about}</h3>
+                         {" "}
                          <h1 className="text-xl font-semibold tracking-tight text-gray-900">
                               {tea.name}
                          </h1>
-
+                         <h3>{tea.about}</h3>
                          <div className="flex items-center justify-between mt-4 space-x-3 md:mt-6">
                               <span className="text-3xl font-bold text-gray-900">
                                    {tea.price}р

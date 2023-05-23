@@ -1,13 +1,15 @@
 import { useSelector } from "react-redux";
 import BackButton from "../ui/BackButton";
-import { getCurrentUserData } from "../../store/users";
+import { getCurrentUserData, getUsersLoadingStatus } from "../../store/users";
 import { getTeaList } from "../../store/tea";
 import Loader from "../ui/loader";
 import ItemCard from "./ItemCard";
+import { useEffect } from "react";
 
 const CartPage = () => {
      const currentUser = useSelector(getCurrentUserData());
      const teaList = useSelector(getTeaList());
+
      const userCart = currentUser.cart;
 
      if (userCart.length === 0) {

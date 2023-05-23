@@ -52,7 +52,7 @@ const LoginPage = () => {
           if (!isValid) return;
           dispatch(login({ payload: data }));
 
-          navigate(`/ `);
+          navigate(`/`);
      };
 
      return (

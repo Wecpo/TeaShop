@@ -4,11 +4,21 @@ import {
      getCurrentUserData,
      removeItemFromUserCart,
 } from "../store/users";
+import { useEffect, useState } from "react";
 
 const useCart = () => {
      const dispatch = useDispatch();
      const currentUser = useSelector(getCurrentUserData());
+
      const { cart } = currentUser;
+
+     // const [cart, setCart] = useState(null);
+
+     // useEffect(() => {
+     //      setCart(currentUser.cart);
+     // }, [currentUser]);
+
+     // console.log(cart, currentUser);
 
      const addToCart = (id) => {
           const count = 1;

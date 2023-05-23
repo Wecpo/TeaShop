@@ -1,4 +1,3 @@
-import MainPage from "./components/pages/MainPage";
 import { useDispatch } from "react-redux";
 import { loadTeaList } from "./store/tea";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -9,14 +8,13 @@ import AboutPage from "./components/pages/AboutPage";
 import Login from "./layouts/login";
 import AppLoader from "./components/hoc/appLoader";
 import LogOut from "./layouts/logOut";
-import { loadUsersList } from "./store/users";
+
 import Start from "./layouts/start";
 
 function App() {
      const dispatch = useDispatch();
 
      dispatch(loadTeaList());
-     dispatch(loadUsersList());
 
      return (
           <AppLoader>
