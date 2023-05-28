@@ -83,6 +83,7 @@ const useCart = () => {
           isInCart,
           handleDecrementItemInCart,
           handleIncrementItemInCart,
+          removeFromCart,
      };
 };
 
