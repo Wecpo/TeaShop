@@ -44,14 +44,12 @@ const NavProfile = () => {
                                    {/* <!-- Dropdown menu --> */}
                                    <div className={toggleHidden}>
                                         <ul className="py-2 text-sm text-gray-700 ">
-                                             <li>
-                                                  <a
-                                                       href="#"
-                                                       className="block px-4 py-2 hover:bg-gray-100"
-                                                  >
-                                                       Настройки
-                                                  </a>
-                                             </li>
+                                             <NavLink
+                                                  to="/edit"
+                                                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 "
+                                             >
+                                                  Настройки
+                                             </NavLink>
                                         </ul>
                                         <div className="py-1">
                                              <NavLink

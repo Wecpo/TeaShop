@@ -33,7 +33,7 @@ const ItemPage = () => {
                     </div>
                </div>
           );
-     } else return <Loader />;
+     }
 };
 
 export default ItemPage;

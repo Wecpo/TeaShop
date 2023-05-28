@@ -1,4 +1,3 @@
-import MainPage from "./components/pages/MainPage";
 import { useDispatch } from "react-redux";
 import { loadTeaList } from "./store/tea";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -11,6 +10,7 @@ import AppLoader from "./components/hoc/appLoader";
 import LogOut from "./layouts/logOut";
 import { loadUsersList } from "./store/users";
 import Start from "./layouts/start";
+import EditPage from "./components/pages/EditPage";
 
 function App() {
      const dispatch = useDispatch();
@@ -26,6 +26,7 @@ function App() {
                          <Route path="/404" element={<NotFoundPage />} />
                          <Route path="/tea/:id" element={<ItemPage />} />
                          <Route path="/cart" element={<CartPage />} />
+                         <Route path="/edit" element={<EditPage />} />
                          <Route path="/about" element={<AboutPage />} />
                          <Route path="/login" element={<Login />} />
                          <Route path="/logout" element={<LogOut />} />
