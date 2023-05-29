@@ -25,4 +25,22 @@ router.delete(`/:teaId`, auth, async (req, res) => {
      }
 });
 
+router.patch(`/:teaId`, async (req, res) => {
+     try {
+          const { teaId } = req.params;
+          if (teaId === req.body._id) {
+               const updatedTea = await Tea.findByIdAndUpdate(teaId, req.body, {
+                    new: true,
+               });
+               res.send(updatedTea);
+          } else {
+               res.status(401).json({ message: `Unauthorized` });
+          }
+     } catch (e) {
+          res.status(500).json({
+               message: `На сервере произошла ошибка. Попробуйте позже...`,
+          });
+     }
+});
+
 module.exports = router;

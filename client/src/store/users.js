@@ -114,9 +114,9 @@ const authRequested = createAction("users/authRequested");
 const userUpdateFailed = createAction("users/userUpdateFailed");
 const userUpdateRequested = createAction("users/userUpdateRequested");
 
-export const incrementItemInCart = (payload) => async (dispatch) => {};
+// export const incrementItemInCart = (payload) => async (dispatch) => {};
 
-export const decrementItemInCart = (payload) => async (dispatch) => {};
+// export const decrementItemInCart = (payload) => async (dispatch) => {};
 
 export const addItemToUserCart = (payload) => async (dispatch) => {
      dispatch(userCartAddItemRequested());

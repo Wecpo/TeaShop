@@ -11,6 +11,7 @@ import LogOut from "./layouts/logOut";
 
 import Start from "./layouts/start";
 import EditPage from "./components/pages/EditPage";
+import EditTeaPage from "./components/pages/EditTeaPage";
 
 function App() {
      const dispatch = useDispatch();
@@ -29,6 +30,7 @@ function App() {
                          <Route path="/about" element={<AboutPage />} />
                          <Route path="/login" element={<Login />} />
                          <Route path="/logout" element={<LogOut />} />
+                         <Route path="/edit/:id" element={<EditTeaPage />} />
                     </Routes>
                </BrowserRouter>
           </AppLoader>

@@ -1,5 +1,3 @@
-import axios from "axios";
-import config from "../config.json";
 import httpService from "./http.service";
 
 const teaEndpoint = "tea/";
@@ -11,7 +9,13 @@ const teaService = {
      },
      delete: async (teaId) => {
           const { data } = await httpService.delete(teaEndpoint + teaId);
-          // console.log(data);
+          return data;
+     },
+     update: async (payload) => {
+          const { data } = await httpService.patch(
+               teaEndpoint + payload._id,
+               payload
+          );
           return data;
      },
 };
