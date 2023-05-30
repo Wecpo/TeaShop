@@ -33,12 +33,19 @@ const teaSlice = createSlice({
           teaUpdateRequested: (state) => {
                state.isLoading = true;
           },
+          teaAddRequested: (state) => {
+               state.isLoading = true;
+          },
+
           teaUpdateReceived: (state, action) => {
                state.entities[
                     state.entities.findIndex(
                          (u) => u._id === action.payload._id
                     )
                ] = action.payload;
+          },
+          teaAddReceived: (state, action) => {
+               state.entities = [...state.entities, action.payload];
           },
      },
 });
@@ -52,6 +59,8 @@ const {
      teaDeletedFromList,
      teaUpdateRequested,
      teaUpdateReceived,
+     teaAddRequested,
+     teaAddReceived,
 } = actions;
 
 export const getTeaList = () => (state) => state.tea.entities;
@@ -59,6 +68,16 @@ export const getTeaList = () => (state) => state.tea.entities;
 export const getTeaById = (teaId) => (state) => {
      if (state.tea.entities) {
           return state.tea.entities.find((tea) => tea._id === teaId);
+     }
+};
+
+export const addTea = (payload) => async (dispatch) => {
+     dispatch(teaAddRequested());
+     try {
+          const { content } = await teaService.create(payload);
+          dispatch(teaAddReceived(content));
+     } catch (error) {
+          dispatch(teaRequestFailed(error.message));
      }
 };
 

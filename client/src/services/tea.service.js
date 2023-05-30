@@ -18,6 +18,14 @@ const teaService = {
           );
           return data;
      },
+     create: async (payload) => {
+          const { data } = await httpService.post(
+               teaEndpoint + `createTea`,
+               payload
+          );
+
+          return data;
+     },
 };
 
 export default teaService;

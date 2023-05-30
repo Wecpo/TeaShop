@@ -43,4 +43,17 @@ router.patch(`/:teaId`, async (req, res) => {
      }
 });
 
+router.post(`/createTea`, auth, async (req, res) => {
+     try {
+          const newTea = await Tea.create({
+               ...req.body,
+          });
+          res.status(201).send(newTea);
+     } catch (e) {
+          res.status(500).json({
+               message: `На сервере произошла ошибка. Попробуйте позже...`,
+          });
+     }
+});
+
 module.exports = router;

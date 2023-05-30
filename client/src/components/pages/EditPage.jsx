@@ -43,6 +43,9 @@ const EditPage = () => {
                          </ol>
                     ))}{" "}
                </ol>
+               <NavLink to={`/addTea`} className="ml-10 bg-green-700">
+                    Добавить новый чай
+               </NavLink>
           </>
      );
 };
