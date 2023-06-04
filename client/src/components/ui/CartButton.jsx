@@ -3,7 +3,7 @@ import useCart from "../../hooks/useCart";
 import { useSelector } from "react-redux";
 import { getCurrentUserData } from "../../store/users";
 
-const ToCartButton = ({ id }) => {
+const CartButton = ({ id }) => {
      const {
           toggleCart,
           isInCart,
@@ -15,7 +15,6 @@ const ToCartButton = ({ id }) => {
      const itemInCartIndex = currentUser.cart.findIndex(
           (item) => item.id === id
      );
-     // console.log(currentUser.cart[itemInCartIndex]?.count);
 
      if (!buttonStyle) {
           return (
@@ -37,8 +36,8 @@ const ToCartButton = ({ id }) => {
                     >
                          Удалить из корзины
                     </button>
-                    <span className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                         {currentUser.cart[itemInCartIndex].count}
+                    <span className="text-white bg-blue-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                         {currentUser.cart[itemInCartIndex].count}00г
                     </span>
                     <button
                          onClick={() => handleIncrementItemInCart(id)}
@@ -57,8 +56,8 @@ const ToCartButton = ({ id }) => {
      }
 };
 
-ToCartButton.propTypes = {
+CartButton.propTypes = {
      id: PropTypes.string,
 };
 
-export default ToCartButton;
+export default CartButton;

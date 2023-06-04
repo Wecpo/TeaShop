@@ -4,7 +4,6 @@ const { check, validationResult } = require(`express-validator`);
 const User = require(`../models/User`);
 const router = express.Router({ mergeParams: true });
 const tokenService = require(`../services/token.service`);
-const Token = require("../models/Token");
 
 router.post(`/signUp`, [
      check(`email`, `Некорректный email`).isEmail(),
@@ -23,7 +22,6 @@ router.post(`/signUp`, [
                     });
                }
                const { email, password } = req.body;
-
                const existingUser = await User.findOne({ email });
                if (existingUser) {
                     return res.status(400).json({
@@ -33,18 +31,14 @@ router.post(`/signUp`, [
                          },
                     });
                }
-
                const hashedPassword = await bcrypt.hash(password, 12);
                const newUser = await User.create({
                     name: email,
                     ...req.body,
                     password: hashedPassword,
                });
-               console.log(newUser);
-
                const tokens = tokenService.generate({ _id: newUser._id });
                await tokenService.save(newUser._id, tokens.refreshToken);
-
                res.status(201).send({ ...tokens, userId: newUser._id });
           } catch (e) {
                res.status(500).json({

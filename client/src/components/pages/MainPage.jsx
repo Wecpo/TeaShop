@@ -1,15 +1,14 @@
 import { useSelector } from "react-redux";
-import Footer from "../ui/Footer";
-import NavBar from "../ui/NavBar";
 import ItemCard from "./ItemCard";
 import { getTeaList } from "../../store/tea";
 import { paginate } from "../../utils/paginate";
-import Pagination from "../ui/pagination";
+import Pagination from "../ui/Pagination";
 import { useEffect, useState } from "react";
 import _ from "lodash";
 import SortButton from "../ui/SortButton";
-import Search from "../ui/search";
-import GroupList from "../ui/groupList";
+import SearchString from "../ui/SearchString";
+import GroupList from "../ui/GroupList";
+import Loader from "../ui/Loader";
 
 const MainPage = () => {
      const teaList = useSelector(getTeaList());
@@ -24,6 +23,7 @@ const MainPage = () => {
 
      useEffect(() => {
           if (teaList) setIsloading(false);
+          setCurrentPage(1);
      }, [teaList]);
 
      const handleSort = () => {
@@ -76,10 +76,10 @@ const MainPage = () => {
           return (
                <div className="bg-slate-100">
                     <h1 className="flex justify-center px-4 pt-4 mb-4">
-                         Приветствуем Вас в нашем магазине TeaShop
+                         Приветствуем Вас в нашем магазине TeaShop1
                     </h1>
-                    <NavBar />
-                    <Search
+
+                    <SearchString
                          placeholder={`Поиск по названию`}
                          handleSearchQuery={handleSearchQuery}
                          searchQuery={searchQuery}
@@ -88,6 +88,7 @@ const MainPage = () => {
                     <GroupList
                          teaCategories={teaList}
                          onChange={handleChangeCategory}
+                         selectedCategory={selectedCategory}
                     />
                     <ItemCard teaList={cropTea} />
                     <Pagination
@@ -96,12 +97,11 @@ const MainPage = () => {
                          currentPage={currentPage}
                          onPageChange={handlePageChange}
                     />
-                    <Footer />
                </div>
           );
      }
 
-     // return <Loader />;
+     return <Loader />;
 };
 
 export default MainPage;

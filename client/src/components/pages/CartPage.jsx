@@ -1,23 +1,27 @@
 import { useSelector } from "react-redux";
-import BackButton from "../ui/BackButton";
-import { getCurrentUserData, getUsersLoadingStatus } from "../../store/users";
+import { getCurrentUserData } from "../../store/users";
 import { getTeaList } from "../../store/tea";
-import Loader from "../ui/loader";
+import Loader from "../ui/Loader";
 import ItemCard from "./ItemCard";
-import { useEffect } from "react";
+import Button from "../ui/Button";
+import useCart from "../../hooks/useCart";
+import { useNavigate } from "react-router";
 
 const CartPage = () => {
      const currentUser = useSelector(getCurrentUserData());
+     const { orderFromCart } = useCart();
      const teaList = useSelector(getTeaList());
-
      const userCart = currentUser.cart;
+     const navigate = useNavigate();
 
      if (userCart.length === 0) {
           return (
                <>
-                    <BackButton />
+                    <Button body={`Назад`} />
                     <hr />
-                    <h1>Упс, в вашей корзине пусто {`:(`}</h1>
+                    <h1 className="m-6 text-red-400">
+                         Упс, в вашей корзине пусто {`:(`}
+                    </h1>
                </>
           );
      }
@@ -37,23 +41,36 @@ const CartPage = () => {
      const getCartPrice = (cart) => {
           let sum = 0;
           cart.map((item) => {
-               sum += item[0].price * item[0].count;
+               return (sum += item[0].price * item[0].count);
           });
           return sum;
      };
 
+     const handleOrder = () => {
+          orderFromCart();
+          navigate(`/`);
+          alert(`Вы успешно оформили заказ, спасибо!`);
+     };
+
      if (teaList !== null) {
           const itemsInCart = getTeaFromIds(teaList, userCart);
-
           return (
                <div className="bg-slate-100">
-                    <BackButton />
-
+                    <Button body={`Назад`} />
+                    <p className="flex justify-center text-3xl pt-4 text-blue-600">
+                         Итого: {getCartPrice(itemsInCart)}р
+                    </p>
+                    <div className="flex justify-center px-4 pt-4 mb-4">
+                         <button
+                              className="text-white bg-blue-700 m-5 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                              onClick={() => handleOrder()}
+                         >
+                              Оформить заказ
+                         </button>
+                    </div>
                     {itemsInCart.map((tea) => (
                          <ItemCard key={tea[0]._id} teaList={tea} />
                     ))}
-                    <h1>Итого: {getCartPrice(itemsInCart)}р</h1>
-                    <button>Заказать</button>
                </div>
           );
      } else return <Loader />;

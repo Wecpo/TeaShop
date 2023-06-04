@@ -1,10 +1,11 @@
 import { useSelector } from "react-redux";
 import { getIsLoggedIn } from "../store/users";
 import MainPage from "../components/pages/MainPage";
-import Login from "./login";
+import Login from "./Login";
 
-const Start = () => {
+const StartPage = () => {
      const isLoggedId = useSelector(getIsLoggedIn());
+
      if (isLoggedId) {
           return <MainPage />;
      } else {
@@ -12,4 +13,4 @@ const Start = () => {
      }
 };
 
-export default Start;
+export default StartPage;

@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const SortButton = ({ onSort }) => {
      return (
           <div className="flex justify-center ">
@@ -34,6 +36,10 @@ const SortButton = ({ onSort }) => {
                </div>
           </div>
      );
+};
+
+SortButton.propTypes = {
+     onSort: PropTypes.func,
 };
 
 export default SortButton;

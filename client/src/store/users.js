@@ -102,11 +102,9 @@ const {
      authRequestSuccess,
      userLoggedOut,
      userUpdateSuccessed,
-     userCartAddItemRequested,
      userCartAddItemReceived,
      userCartAddItemFailed,
      userCartRemoveItemFailed,
-     userCartRemoveItemRequested,
      userCartRemoveItemReceived,
 } = actions;
 
@@ -114,12 +112,7 @@ const authRequested = createAction("users/authRequested");
 const userUpdateFailed = createAction("users/userUpdateFailed");
 const userUpdateRequested = createAction("users/userUpdateRequested");
 
-// export const incrementItemInCart = (payload) => async (dispatch) => {};
-
-// export const decrementItemInCart = (payload) => async (dispatch) => {};
-
 export const addItemToUserCart = (payload) => async (dispatch) => {
-     dispatch(userCartAddItemRequested());
      try {
           const { cart } = await userService.updateCart(payload);
           dispatch(userCartAddItemReceived(cart));
@@ -129,7 +122,6 @@ export const addItemToUserCart = (payload) => async (dispatch) => {
 };
 
 export const removeItemFromUserCart = (payload) => async (dispatch) => {
-     dispatch(userCartRemoveItemRequested());
      try {
           const { cart } = await userService.updateCart(payload);
           dispatch(userCartRemoveItemReceived(cart));
@@ -165,7 +157,13 @@ export const signUp = (payload) => async (dispatch) => {
           localStorageService.setTokens(data);
           dispatch(authRequestSuccess({ userId: data.userId }));
      } catch (error) {
-          dispatch(authRequestFailed(error.message));
+          const { code, message } = error.response.data.error;
+          if (code === 400) {
+               const errorMessage = generetaAuthError(message);
+               dispatch(authRequestFailed(errorMessage));
+          } else {
+               dispatch(authRequestFailed(error.message));
+          }
      }
 };
 export const logOut = () => (dispatch) => {
@@ -204,6 +202,13 @@ export const getUserById = (userId) => (state) => {
 };
 
 export const getIsLoggedIn = () => (state) => state.users.isLoggedIn;
+
+export const getIsAdmin = () => (state) => {
+     return state.users.entities
+          ? state.users.entities.find((u) => u._id === state.users.auth.userId)
+                 .isAdmin
+          : false;
+};
 export const getDataStatus = () => (state) => state.users.dataLoaded;
 export const getUsersLoadingStatus = () => (state) => state.users.isLoading;
 export const getCurrentUserId = () => (state) => state.users.auth.userId;

@@ -4,27 +4,73 @@ import { getTeaById, updateTea } from "../../store/tea";
 import TextField from "../form/textField";
 import { useEffect, useState } from "react";
 import TextAreaField from "../form/textAreaField";
+import SubmitButton from "../ui/SubmitButton";
+import { validator } from "../../utils/validator";
+import NotFoundPage from "./NotFoundPage";
 
 const EditTeaPage = () => {
      const { id } = useParams();
      const currentTea = useSelector(getTeaById(id));
      const dispatch = useDispatch();
      const navigate = useNavigate();
+     const [errors, setErrors] = useState({});
+
+     const validatorConfig = {
+          about: {
+               isRequired: {
+                    message: "Введите короткое описание",
+               },
+          },
+          name: {
+               isRequired: {
+                    message: "Название обязательно для заполнения",
+               },
+               min: {
+                    message: "Название должено состоять минимум из 3 символов",
+                    value: 3,
+               },
+          },
+          price: {
+               isRequired: {
+                    message: "Цена обязательна для заполнения",
+               },
+          },
+          category: {
+               isRequired: {
+                    message: "Категория обязательна для заполнения",
+               },
+          },
+          imageUrl: {
+               isRequired: {
+                    message: "Вставьте ссылку на изображение",
+               },
+          },
+     };
 
      const [data, setData] = useState({
-          name: ` `,
-          about: ` `,
-          price: ` `,
-          category: ` `,
-          imageUrl: ` `,
+          name: "",
+          about: "",
+          price: "",
+          category: "",
+          imageUrl: "",
      });
+
+     const validate = () => {
+          const errors = validator(data, validatorConfig);
+          setErrors(errors);
+          return Object.keys(errors).length === 0;
+     };
+
+     useEffect(() => {
+          validate();
+     }, [data]);
 
      useEffect(() => {
           if (currentTea) {
                setData({
                     name: currentTea.name,
                     about: currentTea.about,
-                    price: currentTea.price,
+                    price: currentTea.price.toString(),
                     category: currentTea.category,
                     imageUrl: currentTea.image,
                     _id: currentTea._id,
@@ -32,11 +78,12 @@ const EditTeaPage = () => {
           }
      }, [currentTea]);
 
+     const isValid = Object.keys(errors).length === 0;
+
      const handleSubmit = (e) => {
           e.preventDefault();
-          // const isValid = validate();
-          // if (!isValid) return;
-          console.log(data);
+          const isValid = validate();
+          if (!isValid) return;
           dispatch(
                updateTea({
                     ...data,
@@ -55,32 +102,35 @@ const EditTeaPage = () => {
      if (currentTea) {
           return (
                <>
-                    {" "}
                     <form onSubmit={handleSubmit}>
                          <TextField
                               label="Название чая"
                               name="name"
                               value={data.name}
                               onChange={handleChange}
+                              error={errors.name}
                          ></TextField>
                          <TextAreaField
                               label="О чае"
                               name="about"
                               value={data.about}
                               onChange={handleChange}
+                              error={errors.about}
                          ></TextAreaField>
                          <TextField
-                              type="number"
                               label="Цена"
                               name="price"
+                              type="number"
                               value={data.price}
                               onChange={handleChange}
+                              error={errors.price}
                          ></TextField>
                          <TextAreaField
                               label="Категория чая"
                               name="category"
                               value={data.category}
                               onChange={handleChange}
+                              error={errors.category}
                          ></TextAreaField>
                          <TextAreaField
                               label="Ссылка на картинку чая"
@@ -88,17 +138,14 @@ const EditTeaPage = () => {
                               type="url"
                               value={data.imageUrl}
                               onChange={handleChange}
+                              error={errors.imageUrl}
                          ></TextAreaField>
-                         <button
-                              type="submit"
-                              //   disabled={!isValid}
-                              className="btn btn-primary w-100 mx-auto"
-                         >
-                              Обновить
-                         </button>
-                    </form>{" "}
+                         <SubmitButton isValid={isValid} />
+                    </form>
                </>
           );
+     } else {
+          return <NotFoundPage />;
      }
 };
 

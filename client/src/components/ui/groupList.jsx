@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const GroupList = ({ teaCategories, onChange }) => {
+const GroupList = ({ teaCategories, onChange, selectedCategory }) => {
      const categories = [...new Set(teaCategories.map((tea) => tea.category))];
 
      return (
@@ -9,7 +9,11 @@ const GroupList = ({ teaCategories, onChange }) => {
                     <button
                          key={category}
                          onClick={() => onChange(category)}
-                         className="block basis-1/4 w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700"
+                         className={
+                              category === selectedCategory
+                                   ? "block basis-1/4 w-full px-4 py-2 border border-green-500 cursor-pointer hover:bg-gray-100 hover:text-blue-700"
+                                   : "block basis-1/4 w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700"
+                         }
                     >
                          {category}
                     </button>
@@ -27,6 +31,7 @@ const GroupList = ({ teaCategories, onChange }) => {
 GroupList.propTypes = {
      teaCategories: PropTypes.array,
      onChange: PropTypes.func,
+     selectedCategory: PropTypes.string,
 };
 
 export default GroupList;

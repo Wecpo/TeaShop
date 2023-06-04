@@ -5,20 +5,17 @@ const TextAreaField = ({ label, name, value, onChange, error }) => {
      const handleChange = ({ target }) => {
           onChange({ name: target.name, value: target.value });
      };
-     const getInputClasses = () => {
-          return "form-control" + (error ? " is-invalid" : "");
-     };
 
      return (
-          <div className="mb-4">
+          <div className="block text-m text-gray-800 m-4">
                <label htmlFor={name}> {label}</label>
-               <div className="input-group has-validation">
+               <div className="block w-full px-4 py-2 mt-2 text-red-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40">
                     <textarea
                          id={name}
                          name={name}
                          value={value}
                          onChange={handleChange}
-                         className={getInputClasses()}
+                         className="block w-full px-4 py-2 mt-2 text-blue-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
                     />
 
                     {error && <div className="invalid-feedback ">{error}</div>}

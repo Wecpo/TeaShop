@@ -1,46 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 const TextField = ({ label, type, name, value, onChange, error }) => {
-     const [showPassword, setShowPassword] = useState(false);
-
      const handleChange = ({ target }) => {
           onChange({ name: target.name, value: target.value });
      };
-     const getInputClasses = () => {
-          return "form-control" + (error ? " is-invalid" : "");
-     };
-     const toggleShowPassword = () => {
-          setShowPassword((prevState) => !prevState);
-     };
+
      return (
-          <div className="mb-4">
+          <div className="block text-sm text-gray-800 m-4">
                <label htmlFor={name}> {label}</label>
-               <div className="input-group has-validation">
+               <div className="block w-full px-4 py-2 mt-2 text-red-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40">
                     <input
-                         type={showPassword ? "text" : type}
+                         type={type}
                          id={name}
                          name={name}
                          value={value}
                          onChange={handleChange}
-                         className={getInputClasses()}
+                         className="block w-full px-4 py-2 mt-2 text-blue-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
                     />
-
-                    {type === "password" && (
-                         <button
-                              className="btn btn-outline-secondary"
-                              type="button"
-                              onClick={toggleShowPassword}
-                         >
-                              <i
-                                   className={
-                                        "bi bi-eye" +
-                                        (showPassword ? "-slash" : "")
-                                   }
-                              ></i>
-                         </button>
-                    )}
-                    {error && <div className="invalid-feedback ">{error}</div>}
+                    {error && <div>{error}</div>}
                </div>
           </div>
      );

@@ -7,7 +7,7 @@ import {
 } from "../../store/users";
 import { useEffect } from "react";
 import { loadTeaList } from "../../store/tea";
-import Loader from "../ui/loader";
+import Loader from "../ui/Loader";
 
 const AppLoader = ({ children }) => {
      const dispatch = useDispatch();

@@ -24,6 +24,9 @@ const schema = new Schema(
           cart: {
                type: Array,
           },
+          isAdmin: {
+               type: Boolean,
+          },
      },
      {
           timestamps: true,

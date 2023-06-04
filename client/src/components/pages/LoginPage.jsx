@@ -1,10 +1,11 @@
 import TextField from "../form/textField";
 import CheckBoxField from "../form/checkBoxField";
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { login } from "../../store/users";
+import { useDispatch, useSelector } from "react-redux";
+import { getAuthErrors, login } from "../../store/users";
 import { validator } from "../../utils/validator";
 import { useNavigate } from "react-router";
+import SubmitButton from "../ui/SubmitButton";
 
 const LoginPage = () => {
      const [data, setData] = useState({
@@ -15,6 +16,7 @@ const LoginPage = () => {
      const dispatch = useDispatch();
      const navigate = useNavigate();
      const [errors, setErrors] = useState({});
+     const loginError = useSelector(getAuthErrors());
 
      const handleChange = (target) => {
           setData((prevState) => ({
@@ -51,7 +53,6 @@ const LoginPage = () => {
           const isValid = validate();
           if (!isValid) return;
           dispatch(login({ payload: data }));
-
           navigate(`/`);
      };
 
@@ -79,8 +80,8 @@ const LoginPage = () => {
                >
                     Оставаться в системе
                </CheckBoxField>
-
-               <button type="submit">Отправить</button>
+               {loginError && <p className="ml-5 text-red-600">{loginError}</p>}
+               <SubmitButton isValid={isValid} />
           </form>
      );
 };
