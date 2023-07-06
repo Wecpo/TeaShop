@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import PropTypes from "prop-types";
 
-const Button = ({ body }) => {
+const BackButton = ({ body = `Назад` }) => {
      const navigate = useNavigate();
 
      return (
@@ -14,8 +14,8 @@ const Button = ({ body }) => {
      );
 };
 
-Button.propTypes = {
+BackButton.propTypes = {
      body: PropTypes.string,
 };
 
-export default Button;
+export default BackButton;

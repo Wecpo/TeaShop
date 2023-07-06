@@ -7,6 +7,7 @@ import TextAreaField from "../form/textAreaField";
 import SubmitButton from "../ui/SubmitButton";
 import { validator } from "../../utils/validator";
 import NotFoundPage from "./NotFoundPage";
+import BackButton from "../ui/BackButton";
 
 const EditTeaPage = () => {
      const { id } = useParams();
@@ -62,7 +63,7 @@ const EditTeaPage = () => {
      };
 
      useEffect(() => {
-          validate();
+          validate(); // eslint-disable-next-line react-hooks/exhaustive-deps
      }, [data]);
 
      useEffect(() => {
@@ -102,6 +103,7 @@ const EditTeaPage = () => {
      if (currentTea) {
           return (
                <>
+                    <BackButton />
                     <form onSubmit={handleSubmit}>
                          <TextField
                               label="Название чая"
@@ -140,7 +142,7 @@ const EditTeaPage = () => {
                               onChange={handleChange}
                               error={errors.imageUrl}
                          ></TextAreaField>
-                         <SubmitButton isValid={isValid} />
+                         <SubmitButton isValid={isValid} body={`Обновить`} />
                     </form>
                </>
           );

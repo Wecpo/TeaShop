@@ -1,16 +1,25 @@
+// eslint-disable-next-line react-hooks/exhaustive-deps
+
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TextField from "../form/textField";
 import RadioField from "../form/radioField";
 import { validator } from "../../utils/validator";
-import { getAuthErrors, signUp } from "../../store/users";
+import {
+     authErrorReset,
+     getAuthErrors,
+     getIsLoggedIn,
+     signUp,
+} from "../../store/users";
 import CheckBoxField from "../form/checkBoxField";
 import { useNavigate } from "react-router";
 import SubmitButton from "../ui/SubmitButton";
-import { generetaAuthError } from "../../utils/generateAuthError";
 
 const RegisterPage = () => {
      const dispatch = useDispatch();
+     const navigate = useNavigate();
+     const isLoggedIn = useSelector(getIsLoggedIn());
+     const registerError = useSelector(getAuthErrors());
      const [data, setData] = useState({
           email: "",
           password: "",
@@ -19,9 +28,8 @@ const RegisterPage = () => {
           licence: false,
           isAdmin: false,
      });
+
      const [errors, setErrors] = useState({});
-     const registerError = useSelector(getAuthErrors());
-     const navigate = useNavigate();
      const handleChange = (target) => {
           setData((prevState) => ({
                ...prevState,
@@ -68,15 +76,24 @@ const RegisterPage = () => {
                },
           },
      };
-     useEffect(() => {
-          validate();
-     }, [data]);
 
      const validate = () => {
           const errors = validator(data, validatorConfig);
           setErrors(errors);
           return Object.keys(errors).length === 0;
      };
+
+     useEffect(() => {
+          validate(); // eslint-disable-next-line react-hooks/exhaustive-deps
+     }, [data]);
+
+     useEffect(() => {
+          dispatch(authErrorReset()); // eslint-disable-next-line react-hooks/exhaustive-deps
+     }, []);
+
+     useEffect(() => {
+          if (isLoggedIn) navigate(`/`); // eslint-disable-next-line react-hooks/exhaustive-deps
+     }, [isLoggedIn]);
 
      const isValid = Object.keys(errors).length === 0;
 
@@ -87,7 +104,6 @@ const RegisterPage = () => {
           const newData = {
                ...data,
           };
-          navigate(`/`);
           dispatch(signUp(newData));
      };
 
@@ -131,7 +147,7 @@ const RegisterPage = () => {
                     name="licence"
                     error={errors.licence}
                >
-                    Подтвердить <a>лицензионное соглашение</a>
+                    Подтвердить <a href="#/">лицензионное соглашение</a>
                </CheckBoxField>
                <CheckBoxField
                     value={data.isAdmin}

@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { logOut } from "../store/users";
 import { useNavigate } from "react-router";
-import Loader from "../components/ui/Loader";
 
 const LogOut = () => {
      const navigate = useNavigate();
@@ -11,9 +10,8 @@ const LogOut = () => {
      useEffect(() => {
           dispatch(logOut());
           localStorage.clear();
-          navigate(`/`);
+          navigate(`/`); // eslint-disable-next-line react-hooks/exhaustive-deps
      }, []);
-     return <Loader />;
 };
 
 export default LogOut;

@@ -64,6 +64,9 @@ const usersSlice = createSlice({
           authRequested: (state) => {
                state.error = null;
           },
+          authErrorReseted: (state) => {
+               state.error = null;
+          },
           userCartAddItemRequested: (state) => {
                state.isLoading = true;
           },
@@ -100,6 +103,7 @@ const {
      usersRequestFailed,
      authRequestFailed,
      authRequestSuccess,
+     authErrorReseted,
      userLoggedOut,
      userUpdateSuccessed,
      userCartAddItemReceived,
@@ -166,10 +170,16 @@ export const signUp = (payload) => async (dispatch) => {
           }
      }
 };
+
+export const authErrorReset = () => (dispatch) => {
+     dispatch(authErrorReseted());
+};
+
 export const logOut = () => (dispatch) => {
      localStorageService.removeAuthData();
      dispatch(userLoggedOut());
 };
+
 export const loadUsersList = () => async (dispatch) => {
      dispatch(usersRequested());
      try {
@@ -179,6 +189,7 @@ export const loadUsersList = () => async (dispatch) => {
           dispatch(usersRequestFailed(error.message));
      }
 };
+
 export const updateUser = (payload) => async (dispatch) => {
      dispatch(userUpdateRequested());
      try {
@@ -200,9 +211,7 @@ export const getUserById = (userId) => (state) => {
           return state.users.entities.find((u) => u._id === userId);
      }
 };
-
 export const getIsLoggedIn = () => (state) => state.users.isLoggedIn;
-
 export const getIsAdmin = () => (state) => {
      return state.users.entities
           ? state.users.entities.find((u) => u._id === state.users.auth.userId)

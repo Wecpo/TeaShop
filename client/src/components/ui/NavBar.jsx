@@ -1,11 +1,11 @@
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { getCurrentUserData } from "../../store/users";
+import { getCurrentUserData, getIsLoggedIn } from "../../store/users";
 
 const NavBar = () => {
      const currentUser = useSelector(getCurrentUserData());
      const itemsCount = currentUser?.cart.length;
-     if (!currentUser) return null;
+     const isLoggedIn = useSelector(getIsLoggedIn());
 
      return (
           <>
@@ -21,33 +21,46 @@ const NavBar = () => {
                                              Главная
                                         </NavLink>
                                    </li>
-                                   <li>
-                                        <NavLink
-                                             to="/edit"
-                                             className="block py-2 pl-3 pr-4 bg-slate-100 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
-                                        >
-                                             Настройки
-                                        </NavLink>
-                                   </li>{" "}
-                                   <li>
-                                        <NavLink
-                                             to="/logout"
-                                             className="block py-2 pl-3 pr-4 bg-slate-100 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
-                                        >
-                                             Выйти
-                                        </NavLink>
-                                   </li>
-                                   <li className="relative inline-flex items-center px-4 bg-slate-100 text-m font-medium text-center text-black rounded-lg flex justify-end">
-                                        <NavLink
-                                             to={`/cart`}
-                                             className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700  md:p-0"
-                                        >
-                                             Корзина
-                                             <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -right-2">
-                                                  {itemsCount}
-                                             </div>
-                                        </NavLink>
-                                   </li>
+                                   {isLoggedIn ? (
+                                        <>
+                                             <li>
+                                                  <NavLink
+                                                       to="/edit"
+                                                       className="block py-2 pl-3 pr-4 bg-slate-100 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
+                                                  >
+                                                       Настройки
+                                                  </NavLink>
+                                             </li>
+                                             <li>
+                                                  <NavLink
+                                                       to="/logout"
+                                                       className="block py-2 pl-3 pr-4 bg-slate-100 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
+                                                  >
+                                                       Выйти
+                                                  </NavLink>
+                                             </li>{" "}
+                                             <li className="relative inline-flex items-center px-4 bg-slate-100 text-m font-medium text-center text-black rounded-lg flex justify-end">
+                                                  <NavLink
+                                                       to={`/cart`}
+                                                       className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700  md:p-0"
+                                                  >
+                                                       Корзина
+                                                       <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -right-2">
+                                                            {itemsCount}
+                                                       </div>
+                                                  </NavLink>
+                                             </li>
+                                        </>
+                                   ) : (
+                                        <li>
+                                             <NavLink
+                                                  to="/login"
+                                                  className="block py-2 pl-3 pr-4 bg-slate-100 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 "
+                                             >
+                                                  Войти
+                                             </NavLink>
+                                        </li>
+                                   )}
                               </ul>
                          </div>
                     </div>

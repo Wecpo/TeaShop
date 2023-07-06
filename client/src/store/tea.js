@@ -111,4 +111,6 @@ export const loadTeaList = () => async (dispatch) => {
      }
 };
 
+export const getTeaLoadStatus = () => (state) => state.tea.isLoading;
+
 export default teaReducer;

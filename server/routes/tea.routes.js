@@ -17,7 +17,8 @@ router.get(`/`, async (req, res) => {
 router.delete(`/:teaId`, auth, async (req, res) => {
      try {
           const { teaId } = req.params;
-          await Tea.findByIdAndDelete(teaId);
+          const deletedTea = await Tea.findByIdAndDelete(teaId);
+          res.send(deletedTea);
      } catch (e) {
           res.status(500).json({
                message: `На сервере произошла ошибка. Попробуйте позже...`,

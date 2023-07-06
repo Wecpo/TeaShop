@@ -11,7 +11,6 @@ const AddTeaPage = () => {
      const dispatch = useDispatch();
      const navigate = useNavigate();
      const [errors, setErrors] = useState({});
-
      const [data, setData] = useState({
           name: "",
           about: "",
@@ -19,6 +18,7 @@ const AddTeaPage = () => {
           category: "",
           imageUrl: "",
      });
+
      const validatorConfig = {
           about: {
                isRequired: {
@@ -58,7 +58,7 @@ const AddTeaPage = () => {
      };
 
      useEffect(() => {
-          validate();
+          validate(); // eslint-disable-next-line react-hooks/exhaustive-deps
      }, [data]);
 
      const isValid = Object.keys(errors).length === 0;

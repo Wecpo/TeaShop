@@ -3,21 +3,21 @@ import { getCurrentUserData } from "../../store/users";
 import { getTeaList } from "../../store/tea";
 import Loader from "../ui/Loader";
 import ItemCard from "./ItemCard";
-import Button from "../ui/Button";
+import BackButton from "../ui/BackButton";
 import useCart from "../../hooks/useCart";
 import { useNavigate } from "react-router";
 
 const CartPage = () => {
+     const navigate = useNavigate();
      const currentUser = useSelector(getCurrentUserData());
      const { orderFromCart } = useCart();
      const teaList = useSelector(getTeaList());
      const userCart = currentUser.cart;
-     const navigate = useNavigate();
 
      if (userCart.length === 0) {
           return (
                <>
-                    <Button body={`Назад`} />
+                    <BackButton />
                     <hr />
                     <h1 className="m-6 text-red-400">
                          Упс, в вашей корзине пусто {`:(`}
@@ -33,6 +33,7 @@ const CartPage = () => {
                     if (tea._id === item.id) {
                          teaListInCart.push({ ...tea, count: item.count });
                     }
+                    return null;
                });
                return teaListInCart;
           });
@@ -56,7 +57,7 @@ const CartPage = () => {
           const itemsInCart = getTeaFromIds(teaList, userCart);
           return (
                <div className="bg-slate-100">
-                    <Button body={`Назад`} />
+                    <BackButton />
                     <p className="flex justify-center text-3xl pt-4 text-blue-600">
                          Итого: {getCartPrice(itemsInCart)}р
                     </p>

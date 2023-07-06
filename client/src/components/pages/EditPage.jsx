@@ -8,13 +8,16 @@ const EditPage = () => {
      const teaList = useSelector(getTeaList());
      const dispatch = useDispatch();
      const { removeFromCart } = useCart();
+
      if (teaList === null) {
           return <Loader />;
      }
+
      const deleteTea = (id) => {
           removeFromCart(id);
           dispatch(deleteTeaFromList(id));
      };
+
      return (
           <>
                <div className="flex justify-center m-2">

@@ -4,12 +4,19 @@ import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 import { getIsAdmin } from "../../store/users";
 
-const ProtectedRoute = ({ children, redirectPath = `/login` }) => {
+const ProtectedRoute = ({ children, redirectPath = `/` }) => {
      const isAdmin = useSelector(getIsAdmin());
-
      if (!isAdmin) {
-          return <Navigate to={redirectPath} replace />;
+          return (
+               <>
+                    {alert(
+                         `Для доступа к настройкам нужно обладать правами администратора, вы переадресованы на главную страницу.`
+                    )}
+                    <Navigate to={redirectPath} replace />
+               </>
+          );
      }
+
      return children;
 };
 

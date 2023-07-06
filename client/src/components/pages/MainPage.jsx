@@ -23,7 +23,6 @@ const MainPage = () => {
 
      useEffect(() => {
           if (teaList) setIsloading(false);
-          setCurrentPage(1);
      }, [teaList]);
 
      const handleSort = () => {
@@ -78,7 +77,6 @@ const MainPage = () => {
                     <h1 className="flex justify-center px-4 pt-4 mb-4">
                          Приветствуем Вас в нашем магазине TeaShop1
                     </h1>
-
                     <SearchString
                          placeholder={`Поиск по названию`}
                          handleSearchQuery={handleSearchQuery}

@@ -8,7 +8,7 @@ import {
 const useCart = () => {
      const dispatch = useDispatch();
      const currentUser = useSelector(getCurrentUserData());
-     const { cart } = currentUser;
+     const cart = currentUser?.cart;
 
      const addToCart = (id) => {
           const count = 1;
@@ -21,7 +21,7 @@ const useCart = () => {
           dispatch(removeItemFromUserCart({ ...currentUser, cart: newCart }));
      };
 
-     const toggleCart = (id) => {
+     const changeCart = (id) => {
           const itemInCartIndex = cart.findIndex((item) => item.id === id);
           if (itemInCartIndex === -1) {
                addToCart(id);
@@ -47,6 +47,7 @@ const useCart = () => {
           });
           dispatch(addItemToUserCart({ ...currentUser, cart: newCart }));
      };
+
      const handleDecrementItemInCart = (id) => {
           const itemInCartIndex = cart.findIndex((item) => item.id === id);
           let count = currentUser.cart[itemInCartIndex].count;
@@ -64,18 +65,8 @@ const useCart = () => {
           }
      };
 
-     const isInCart = (id) => {
-          const itemInCartIndex = cart.findIndex((item) => item.id === id);
-          if (itemInCartIndex !== -1) {
-               return true;
-          } else {
-               return false;
-          }
-     };
-
      return {
-          toggleCart,
-          isInCart,
+          changeCart,
           handleDecrementItemInCart,
           handleIncrementItemInCart,
           removeFromCart,
