@@ -23,7 +23,7 @@ const Login = () => {
                                    <h3 className="m-4">Регистрация</h3>
                                    <RegisterPage />
                                    <p className="ml-5">
-                                        Уже зарегестрированы?
+                                        Уже зарегистрированы?
                                         <a
                                              href="#/"
                                              className="underline m-4"
@@ -39,7 +39,7 @@ const Login = () => {
                                    <h3 className="m-4">Войти</h3>
                                    <LoginPage />
                                    <p className="ml-5">
-                                        Еще не зарегестрированы?
+                                        Еще не зарегистрированы?
                                         <a
                                              href="#/"
                                              className="underline m-4"
