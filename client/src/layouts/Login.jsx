@@ -46,7 +46,7 @@ const Login = () => {
                                              role="button"
                                              onClick={toggleFormType}
                                         >
-                                             Зарегестрироваться
+                                             Зарегистрироваться
                                         </a>
                                    </p>
                               </>
