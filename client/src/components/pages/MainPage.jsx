@@ -18,7 +18,7 @@ const MainPage = () => {
      const pageSize = 4;
      const [isLoading, setIsloading] = useState(true);
      const [sortBy, setSortBy] = useState(``);
-     const [searchQuery, setSearchQuery] = useState("");
+     const [searchQuery, setSearchQuery] = useState(``);
      const [selectedCategory, setSelectedCategory] = useState(``);
 
      useEffect(() => {
@@ -36,6 +36,7 @@ const MainPage = () => {
      const handleChangeCategory = (item) => {
           setCurrentPage(1);
           setSelectedCategory(item);
+          setSearchQuery(``);
      };
 
      const handlePageChange = (pageIndex) => {
