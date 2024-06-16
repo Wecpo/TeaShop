@@ -15,6 +15,7 @@ app.use(cors());
 app.use(`/api`, routes);
 
 const PORT = config.get(`port`) ?? 8080;
+const HOSTNAME = "192.168.1.220";
 
 if (process.env.NODE_ENV === "production") {
      app.use("/", express.static(path.join(__dirname, "client")));
@@ -32,9 +33,9 @@ async function start() {
                initDatabase();
           });
           await mongoose.connect(config.get(`mongoUri`));
-          app.listen(8080, () =>
+          app.listen(8080, HOSTNAME () =>
                console.log(
-                    chalk.green(`Server has been started on port ${PORT}...`)
+                    chalk.green(`Server running at http://${hostname}:${PORT}/`)
                )
           );
      } catch (e) {
